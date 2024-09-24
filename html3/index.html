@@ -11,17 +11,17 @@
     </header>
     <main>
         <section>
-            <form action=>
+            <form action="/action_page.php>" method="get">
                 <h2>Informazioni</h2>
                 <label for="nome">Nome:</label>
-                <input type="text" id="nome" name="nome">
+                <input type="text" id="nome" name="nome" required>
                 <label for="cognome">Cognome:</label>
-                <input type="text" id="cognome" name="cognome"><br>
+                <input type="text" id="cognome" name="cognome" required><br>
                 <br>
                 <label for="indirizzo">Indirizzo:</label>
-                <input type="text" name="indirizzo" id="indirizzo">
+                <input type="text" name="indirizzo" id="indirizzo" required>
                 <label for="email">Email</label>
-                <input type="text" id="email" name="email">
+                <input type="text" id="email" name="email" required>
                 <br>
                 <br>
                 <h2>Textarea</h2>
@@ -42,8 +42,7 @@
                 <br>
                 <br>
                 <h2>Submit</h2>
-                <input type="submit">
-                Submit
+                <button type="submit">Submit</button>
             </form>
         </section>
     </main>
