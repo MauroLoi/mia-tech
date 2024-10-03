@@ -4,18 +4,19 @@
 }
 .container {
     margin: auto;
-    display: block;
     width: 30%;
     height: auto;
-    border-style: outset;
     border-radius: 10px;
     border-color: rgb(192, 190, 190);
+    overflow: hidden;
+    -webkit-box-shadow: 1px 2px 14px -1px rgba(102,102,102,1);
+    -moz-box-shadow: 1px 2px 14px -1px rgba(102,102,102,1);
+    box-shadow: 1px 2px 14px -1px rgba(102,102,102,1);
 }
 img {
     margin: 0;
     width: 100%;
     height: auto;
-    border-radius: 10px;
 }
 
 .topic {
@@ -31,20 +32,16 @@ img {
 }
 
 h3 {
-    display: block;
     width: 300px;
     height: auto;
-    display: block; 
     margin: 13px 20px;
     padding: 10px 4px;
     
 }
 
 .content {
-    display: block;
     width: 300px;
-    height: auto;
-    display: block; 
+    height: auto; 
     margin: 13px 20px;
     padding: 10px 4px;
     font-size: 15px;
