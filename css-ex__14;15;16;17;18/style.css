@@ -1,0 +1,20 @@
+div {
+    color: gray;
+    text-align: left;
+}
+
+.rgb {
+    color: rgb(255, 0, 0);
+}
+
+.esa {
+    color: #fa0000;
+}
+
+.rgba {
+    color: rgba(255, 0, 0, 0.7);
+}
+
+.colorname {
+    color: red;
+}
