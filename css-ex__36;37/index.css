@@ -1,7 +1,12 @@
+:root {
+    --color-red: #ff0000; 
+    --padding-base: 300px;
+}
+
 * {
-    color: red;
+    color: var(--color-red);
 }
 
 .container {
-    padding: 300px 300px;
+    padding: var(--padding-base);
 }
