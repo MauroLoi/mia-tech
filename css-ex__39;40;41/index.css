@@ -1,0 +1,15 @@
+.container {
+    display: flex;
+    flex-direction: column-reverse;
+    background-color: rgb(164, 224, 204);
+    width: 600px;
+}
+
+.item {
+    background-color: rgb(243, 192, 130);
+    width: 100px;
+    height: 50px;
+    margin: 2px;
+    text-align: center;
+    padding-top: 25px;
+}
