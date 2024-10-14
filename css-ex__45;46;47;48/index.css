@@ -27,4 +27,5 @@
 
 #it3 {
     flex-grow: 4;
+    align-self: flex-end;
 }
