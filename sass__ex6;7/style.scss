@@ -1,0 +1,68 @@
+@use 'colors';
+
+@mixin nav-dark-mode ($bg,$color) {
+    background-color: $bg;
+    .container {
+        .container__item {
+            color: $color;
+            background-color: $bg;
+    
+            &:hover {
+                color: yellow;
+            }
+        }
+    }
+}
+
+.dark-mode {
+    @include nav-dark-mode (colors.$primary-dark-color, colors.$text-dark-color);
+}
+
+$p-fontsize: 22px;
+$p-width: 1200px;
+
+nav {
+    width: 100%;
+    height: 80px;
+    background-color: colors.$primary-color;
+
+    .container {
+        display: flex;
+        justify-content: center;
+        padding: 10px;
+        box-sizing: border-box;
+
+        .container__item {
+            padding: 20px;
+            font-size: 18px;
+            text-transform: uppercase;
+            color: colors.$secondary-color;
+            background-color: #e7e7e7;
+
+            &:hover {
+                color: #ff0000;
+            }
+        }
+    }
+}
+
+.container__item:nth-child(4) {
+    @extend .container__item;
+    border-style: groove;
+    border-color: #333333;
+}
+
+.container__p1 {
+    width: calc($p-width / 3);
+    background-color: antiquewhite;
+    font-size: $p-fontsize;
+    padding: 10px;
+}
+
+.container__p2 {
+    width: $p-width;
+    background-color: aquamarine;
+    font-size: $p-fontsize;
+    padding: 10px;
+}
+
