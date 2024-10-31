@@ -1,0 +1,19 @@
+{
+  "name": "firstpack",
+  "version": "0.1.0",
+  "description": "none",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MauroLoi/mia-tech.git"
+  },
+  "author": "mauro",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MauroLoi/mia-tech/issues"
+  },
+  "homepage": "https://github.com/MauroLoi/mia-tech#readme"
+}
