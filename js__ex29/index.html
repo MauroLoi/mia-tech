@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        let students = [
+            {name: "Jhon", grade: 64},
+            {name: "Jason", grade: 61},
+            {name: "Malcom", grade: 58},
+            {name: "Clara", grade: 69},
+            {name: "Ronny", grade: 55}
+        ]
+
+        let passedStudents = students.filter((student) => student.grade >= 60)
+        console.log(passedStudents)
+
+        let nopassStudent = students.find ((student) => student.grade <  60)
+        console.log(nopassStudent)
+
+    </script>
+</body>
+</html>
