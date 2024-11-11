@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        class Automobile {
+            marca = ""
+            modello = ""
+            anno = ""
+            chilometraggio = 0
+
+            constructor(marca, modello, anno, chilometraggio = 0) {
+                this.marca = marca
+                this.modello = modello
+                this.anno = anno
+                this.chilometraggio = chilometraggio
+            }
+
+            descrizione() {
+                return `L'automobile è una ${this.marca} ${this.modello} del ${this.anno}.`
+            }
+
+            aggiungiChilometri(km) {
+                if (km > 0) {
+                    this.chilometraggio += km
+                }
+            }
+
+            mostraChilometraggio() {
+                return `Chilometraggio attuale: ${this.chilometraggio} km`
+            }
+        }
+
+        let Fiesta = new Automobile("Ford", "Fiesta", 2010)
+        console.log(Fiesta.descrizione())
+
+        Fiesta.aggiungiChilometri(80000)
+        console.log(Fiesta.mostraChilometraggio())
+
+        class Elettrica extends Automobile {
+            autonomia = ""
+
+            constructor(marca, modello, anno, chilometraggio = 0, autonomia = 0) {
+                super(marca, modello, anno, chilometraggio)
+                this.autonomia = autonomia
+            }
+
+            descrizione() {
+                return `L'automobile è una ${this.marca} ${this.modello} del ${this.anno} e ha un autonomia residua di ${this.autonomia} km.`
+            }
+
+            ricaricaBatteria(km) {
+                if (km > 0) {
+                    this.autonomia += km
+                }
+            }
+        }
+
+        let Tesla = new Elettrica("Tesla", "Model Y", 2022, 20000, 50)
+        Tesla.ricaricaBatteria(350)
+
+        console.log(Tesla.descrizione())
+        
+        
+
+    </script>
+</body>
+</html>
