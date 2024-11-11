@@ -8,12 +8,16 @@
 <body>
     <script>
 
-        const list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-        list.reverse();
+        const numeri = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+        let lunghezza = numeri.length
 
-        for (let i = 0; i < list.length; i++) {
-            console.log(list[i])
+        for (let i = 0; i < lunghezza / 2; i++) {
+            let temp = numeri[i]
+            numeri[i] = numeri[lunghezza - i - 1]
+            numeri[lunghezza - i -1] = temp
         }
+
+        console.log(numeri)
 
     </script>
 </body>
