@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        class Automobile {
+            marca = ""
+            modello = ""
+            anno = ""
+            chilometraggio = 0
+            #contatoreChiamate = 0
+
+            constructor(marca, modello, anno, chilometraggio = 0) {
+                this.marca = marca
+                this.modello = modello
+                this.anno = anno
+                this.chilometraggio = chilometraggio
+            }
+
+            #incrementaContatore() {
+                this.#contatoreChiamate++
+            }
+
+            static confrontaChilometraggio(auto1, auto2) {
+                if (auto1.chilometraggio > auto2.chilometraggio) {
+                    return `${auto1.marca} ${auto1.modello} ha più chilometri di ${auto2.marca} ${auto2.modello}.`;
+                } else if (auto1.chilometraggio < auto2.chilometraggio) {
+                    return `${auto2.marca} ${auto2.modello} ha più chilometri di ${auto1.marca} ${auto1.modello}.`;
+                } else {
+                    return `${auto1.marca} ${auto1.modello} e ${auto2.marca} ${auto2.modello} hanno lo stesso chilometraggio.`;
+                }
+            }
+
+            _controllaChilometri() {
+                let limiteChilometri = 100000
+                if (this.chilometraggio > limiteChilometri) {
+                    console.log("L'automobile supera i 100.000 km")
+                }
+            }
+
+            #calcolaEtà() {
+                const annoCorrente = new Date().getFullYear();
+                return annoCorrente - this.anno;
+            }
+
+            mostraEtà() {
+                console.log(`L'automobile ha ${this.#calcolaEtà()} anni.`)
+            }
+
+            descrizione() {
+                return `L'automobile è una ${this.marca} ${this.modello} del ${this.anno}.`
+            }
+
+            aggiungiChilometri(km) {
+                if (km > 0) {
+                    this.chilometraggio += km;
+                    this.#incrementaContatore();
+                }
+            }
+
+            mostraContatoreChiamate() {
+                return `I km sono stati aggiunti ${this.#contatoreChiamate} volte.`
+            }
+
+            get mostraChilometraggioAttuale() {
+                return `Chilometraggio attuale: ${this.chilometraggio} km`
+            }
+
+            set setChilometraggio(newChilometraggio) {
+                if (newChilometraggio >= this.chilometraggio) {
+                    this.chilometraggio = newChilometraggio;
+                } else {
+                    console.log("Il chilometraggio non può essere diminuito!");
+                }
+            }
+        }
+
+
+        let Fiesta = new Automobile("Ford", "Fiesta", 2010)
+        // console.log(Fiesta.descrizione())
+        // console.log(Fiesta.mostraEtà())
+
+        Fiesta.aggiungiChilometri(80000)
+        Fiesta.aggiungiChilometri(500)
+        Fiesta.aggiungiChilometri(1200)
+        // console.log(Fiesta.mostraContatoreChiamate())
+        // console.log(Fiesta.mostraChilometraggioAttuale)
+
+        Fiesta.setChilometraggio = 5000
+
+        class Elettrica extends Automobile {
+            autonomia = ""
+
+            constructor(marca, modello, anno, chilometraggio = 0, autonomia = 0) {
+                super(marca, modello, anno, chilometraggio)
+                this.autonomia = autonomia
+            }
+
+            descrizione() {
+                return `L'automobile è una ${this.marca} ${this.modello} del ${this.anno} e ha un autonomia residua di ${this.autonomia} km.`
+            }
+
+            ricaricaBatteria(km) {
+                if (km > 0) {
+                    this.autonomia += km
+                }
+            }
+        }
+
+        let Tesla = new Elettrica("Tesla", "Model Y", 2022, 20000, 50)
+        Tesla.ricaricaBatteria(350)
+
+        Tesla.aggiungiChilometri(1550000)
+
+        // console.log(Tesla.descrizione())
+        // console.log(Tesla.mostraEtà())
+        // console.log(Tesla._controllaChilometri())
+        // console.log(Automobile.confrontaChilometraggio(Fiesta, Tesla))
+
+        Automobile.prototype.__proto__.saluta = function () {
+            return `Ciao! Sono una ${this.marca} ${this.modello}.`;
+        };
+
+    </script>
+</body>
+
+</html>
