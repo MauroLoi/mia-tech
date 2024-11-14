@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        class Automobile {
+            marca = ""
+            modello = ""
+            anno = ""
+
+            constructor(marca, modello, anno) {
+                this.marca = marca
+                this.modello = modello
+                this.anno = anno
+            }
+
+            static verificaIstanza(obj, classe) {
+                if (obj instanceof classe) {
+                    return `${obj.marca} è un ${classe.name}.`
+                } else {
+                    return `${obj.marca} non è un ${classe.name}.`
+                }
+            }
+        }
+
+        let Fiesta = new Automobile("Ford", "Fiesta", 2010)
+
+
+        class Camion {
+            marca = ""
+            modello = ""
+            anno = ""
+
+            constructor(marca, modello, anno) {
+                this.marca = marca
+                this.modello = modello
+                this.anno = anno
+            }
+        }
+
+        let Volvo = new Camion("Volvo", "FM", 2018)
+
+        console.log(Automobile.verificaIstanza(Fiesta, Automobile))
+        console.log(Automobile.verificaIstanza(Volvo, Automobile))
+        console.log(Automobile.verificaIstanza(Volvo, Camion))
+
+
+    </script>
+</body>
+
+</html>
