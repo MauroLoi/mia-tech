@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        function stampa() {
+            console.log("Secondi")
+        }
+
+        const interval = setInterval(stampa, 1000)
+
+        setTimeout(() => {
+            clearInterval(interval)
+            console.log("Stop")
+        }, 5000)
+
+    </script>
+</body>
+
+</html>
