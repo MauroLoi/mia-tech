@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        function divisione(a, b) {
+            try {
+                if (b === 0) {
+                    throw new Error("Il divisore non può essere 0")
+                }
+                let result = a / b
+            } catch (errore) {
+                console.error(`Errore! ${errore.message}`)
+            }
+        }
+
+        divisione(14, 0)
+
+        function provaDelFlusso(c, d) {
+            return c + d
+        }
+
+        let somma = provaDelFlusso(2, 2)
+        console.log(somma) 
+
+    </script>
+</body>
+
+</html>
