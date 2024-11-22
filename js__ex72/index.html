@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        try {
+            let input = 0;
+            if (typeof input !== "string") {
+                throw new TypeError("L'input deve essere una stringa")
+            }
+
+            let parolaMaiuscola = input.toUpperCase()
+        } catch (errore) {
+            if (errore instanceof TypeError) {
+                console.error(`${errore.message}`)
+            } else {
+                console.error(`C'è stato un errore:`)
+            }
+        }
+
+        
+
+    </script>
+</body>
+
+</html>
