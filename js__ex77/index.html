@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        function funzionePromessa() {
+            return new Promise(function(resolve, reject) {
+            setTimeout(() => resolve("gg"), 2000)
+         })
+        }
+
+        funzionePromessa().then(result => console.log(result))
+        
+
+    </script>
+</body>
+</html>
