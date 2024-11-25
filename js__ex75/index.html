@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        function somma(a, b, callback) {
+            let risultato = (a + b)
+            callback(risultato)
+        }
+
+        somma (10, 5, function(risultato) {
+            console.log("10 + 5 =", risultato)
+        })
+
+    </script>
+</body>
+
+</html>
