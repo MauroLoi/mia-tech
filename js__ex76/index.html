@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        
+        function somma (a, b, callback) {
+            callback(a + b);
+        }
+
+        function sottrazione (a, b, callback) {
+            callback(a - b)
+        }
+
+        somma(10, 10, function(risultatoSomma) {
+            sottrazione(risultatoSomma, 5, function(risultato) {
+                console.log("10 + 10 - 5 =", risultato)
+            })
+        })
+
+    </script>
+</body>
+</html>
