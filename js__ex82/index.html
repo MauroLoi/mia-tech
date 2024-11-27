@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        function randomNumber() {
+            return new Promise(function (resolve, reject) {
+                const number = Math.floor(Math.random() * 100)
+                if (number <= 50) {
+                    resolve(number)
+                } else {
+                    reject(`Errore! ${number} è maggiore di 50`)
+                }
+                
+            })
+        }
+
+        randomNumber()
+            .then((number) => {
+                console.log(`OK! Il numero generato è: ${number}`)
+                return number + 50     
+            })
+            .then((result) => {
+                console.log(`sommando 50 il risultato è: ${result}`)
+            })
+            .catch((error) => {
+                console.error(error)
+            })
+
+
+    </script>
+</body>
+
+</html>
