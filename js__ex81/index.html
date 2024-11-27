@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        function number() {
+            return new Promise(function (resolve, reject) {
+                setTimeout(() => resolve(5), 1000)
+            })
+        }
+
+        number()
+            .then((numero) => {
+                if (numero % 2 === 0) {
+                    console.log("il numero é pari!")
+                    return numero
+                } else {
+                    console.error("il numero è dispari! lo incremento di 1")
+                    return (numero + 1)
+                }
+            })
+
+            .then((result) => {
+                console.log(`risultato numero pari: ${result}`)
+            })
+        
+    </script>
+</body>
+
+</html>
