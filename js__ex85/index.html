@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+
+        function randomNumber() {
+            return new Promise(function (resolve, reject) {
+                const number = Math.floor(Math.random() * 200)
+                if (number <= 100) {
+                    resolve(number)
+                } else {
+                    reject(`Errore! ${number} non è minore di 100`)
+                }
+            })
+        }
+
+        randomNumber()
+            .then(number => {
+                console.log(`Congratulazioni! ${number} è minore di 100`)
+                return number + 20
+            })
+            .then((result) => {
+                return result - 50
+            })
+            .catch((error) => {
+                console.error(error)
+            })
+
+
+    </script>
+</body>
+
+</html>
