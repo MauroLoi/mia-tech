@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        async function write(accept) {
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    if (accept) {
+                        resolve("hai accettato")
+                    } else {
+                        reject("Attenzione! devi accettare")
+                    }
+                }, 2000)
+            });
+        }
+
+        async function stamp(accept) {
+            try {
+                const result = await write(accept)
+                console.log(result)
+            }
+            catch (error) {
+                console.error(error)
+            }
+        }
+
+        stamp(false)
+
+    </script>
+</body>
+
+</html>
