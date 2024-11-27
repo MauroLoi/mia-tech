@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        function promessaUno() {
+            return new Promise (function(resolve, reject) {
+                setTimeout(() => resolve("Hello"), 3000)
+            })
+        }
+
+        function promessaDue() {
+            return new Promise(function(resolve, reject) {
+                setTimeout(() => resolve("World!"), 2000)
+            })
+        }
+
+        Promise.all([
+            promessaUno(),
+            promessaDue(),
+        ]).then(function(promesseMantenute) {
+            console.log(promesseMantenute)
+        })
+
+
+
+        
+
+    </script>
+</body>
+
+</html>
