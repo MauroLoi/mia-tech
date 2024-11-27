@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        function funzioneUno() {
+            return new Promise(function(resolve, reject){
+                const accept = true
+                if (accept === true) {
+                    resolve("OK! Hai accettato!")
+                } else {
+                    reject("Errore! non hai accettato!")
+                }
+            })
+        }
+
+        function funzioneDue() {
+            return new Promise(function(resolve, reject){
+                const accept = true
+                if (accept === true) {
+                    resolve("OK! Hai accettato!")
+                } else {
+                    reject("Errore! non hai accettato!")
+                }
+            })
+        }
+
+        function funzioneTre() {
+            return new Promise(function(resolve, reject){
+                const accept = false
+                if (accept === true) {
+                    resolve("OK! Hai accettato!")
+                } else {
+                    reject("Errore! non hai accettato!")
+                }
+            })
+        }
+
+        Promise.allSettled([
+            funzioneUno(),
+            funzioneDue(),
+            funzioneTre(),
+        ]).then(function(allPromise) {
+            console.log(allPromise)
+        })
+
+
+        
+            
+
+    </script>
+</body>
+
+</html>
