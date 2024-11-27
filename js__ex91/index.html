@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        async function funUno() {
+            return new Promise((resolve, reject) => {
+                setTimeout(() => resolve("Prima funzione risolta!"), 2000);
+            });
+        }
+
+        async function funDue() {
+            return new Promise((resolve, reject) => {
+                setTimeout(() => resolve("Seconda funzione risolta!"), 4000);
+            });
+        }
+
+        async function callFun() {
+            const [chiamataUno, chiamataDue] = await Promise.all([funUno(), funDue()])
+            console.log(chiamataUno)
+            console.log(chiamataDue)
+        }
+
+        callFun()
+
+
+
+
+
+    </script>
+</body>
+
+</html>
