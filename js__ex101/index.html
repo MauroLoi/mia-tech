@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+
+        function saveInStorage(chiave, valore) {
+            localStorage.setItem(chiave, valore);
+            sessionStorage.setItem(chiave, valore);
+            console.log("Valore salvato: " + chiave + "=" + valore + " (localStorage e sessionStorage)");
+        }
+
+
+        function getFromStorage(chiave) {
+            let valoreLocal = localStorage.getItem(chiave);
+            let valoreSession = sessionStorage.getItem(chiave);
+            if (valoreLocal) {
+                console.log("Valore recuperato dal localStorage: " + chiave + "=" + valoreLocal);
+            } else {
+                console.log("Valore non trovato nel localStorage per la chiave: " + chiave);
+            }
+            if (valoreSession) {
+                console.log("Valore recuperato dal sessionStorage: " + chiave + "=" + valoreSession);
+            } else {
+                console.log("Valore non trovato nel sessionStorage per la chiave: " + chiave);
+            }
+            return { valoreLocal, valoreSession };
+        }
+
+
+        function removeFromStorage(chiave) {
+            localStorage.removeItem(chiave);
+            sessionStorage.removeItem(chiave);
+            console.log("Valore rimosso per la chiave: " + chiave + " (localStorage e sessionStorage)");
+        }
+
+
+        saveInStorage("testKey", "ValoreKey");
+        getFromStorage("testKey");
+        removeFromStorage("testKey");
+        getFromStorage("testKey");
+
+
+
+    </script>
+</body>
+
+</html>
