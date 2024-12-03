@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        function setCookie(name, value, days) {
+            let expires = "";
+            if (days) {
+                let date = new Date();
+                date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+                expires = "; expires=" + date.toUTCString();
+            }
+            document.cookie = name + "=" + (value || "") + expires + "; path=/";
+            console.log("Cookie salvato: " + name + "=" + value);
+        }
+
+
+        function getCookie(name) {
+            let nameEQ = name + "=";
+            let ca = document.cookie.split(';');
+            for (let i = 0; i < ca.length; i++) {
+                let c = ca[i];
+                while (c.charAt(0) === ' ') c = c.substring(1, c.length);
+                if (c.indexOf(nameEQ) === 0) {
+                    console.log("Cookie recuperato: " + c.substring(nameEQ.length, c.length));
+                    return c.substring(nameEQ.length, c.length);
+                }
+            }
+            console.log("Cookie non trovato: " + name);
+            return null;
+        }
+
+      
+        function deleteCookie(name) {
+            document.cookie = name + '=; Max-Age= -1;';
+            console.log("Cookie rimosso: " + name);
+        }
+
+        
+        setCookie("testCookie", "Mio_Cookie", 7); 
+        getCookie("testCookie"); 
+        deleteCookie("testCookie"); 
+        getCookie("testCookie"); 
+
+
+    </script>
+</body>
+
+</html>
