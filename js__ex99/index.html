@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+       
+        function saveInStorage(key, value) {
+            localStorage.setItem(key, value);
+            console.log("Valore salvato: " + key + "=" + value);
+        }
+
+        
+        function getFromStorage(key) {
+            let value = localStorage.getItem(key);
+            if (value) {
+                console.log("Valore recuperato: " + key + "=" + value);
+            } else {
+                console.log("Valore non trovato per la chiave: " + key);
+            }
+            return value;
+        }
+
+       
+        function removeFromStorage(key) {
+            localStorage.removeItem(key);
+            console.log("Valore rimosso per la chiave: " + key);
+        }
+
+        
+        saveInStorage("testKey", "ValoreKey")
+        getFromStorage("testKey"); 
+        removeFromStorage("testKey"); 
+        getFromStorage("testKey"); 
+
+
+
+    </script>
+</body>
+
+</html>
