@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: "#8b008b",
+            secondary: "#ffe4c4",
+            tertiary: "#87ceeb",
+          },
+        },
+      },
+    };
+  </script>
+  <style type="text/tailwindcss">
+    @layer components {
+      .para {
+        background-color: beige;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 22px;
+        text-align: center;
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+    <p class="para">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex voluptatem aperiam illum sequi cupiditate in nulla iste, alias eum suscipit sint rerum quidem vel. Expedita repellat ullam esse fugit, minus quidem totam voluptas? Est quia earum nihil quisquam dolor aspernatur animi tenetur odit. Cupiditate impedit minus enim, dolorem necessitatibus et?</p>
+</body>
+</html>
