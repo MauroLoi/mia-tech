@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#8b008b",
+              secondary: "#ffe4c4",
+              tertiary: '#87ceeb',
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body>
+    <h1 class="text-center text-3xl font-extrabold">Titolo</h1>
+    <p class="text-center text-blue-950 text-2xl">
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem pariatur
+      alias quasi! Exercitationem autem molestiae cumque dolores, unde animi
+      consequuntur veritatis, iusto, quas quae dolorum nobis at omnis et
+      expedita.
+    </p>
+    <br />
+    <br />
+    <div class="container mx-auto my-8 p-4 border-solid border-2 text-center bg-secondary border-tertiary">
+      <h2 class="text-2xl font-bold">Container centrale</h2>
+      <p class="p-5 text-2xl text-primary bg-tertiary">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit,
+        commodi!<br />Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+        In, harum.<br />Lorem ipsum dolor, sit amet consectetur adipisicing
+        elit. Qui, voluptate?
+      </p>
+    </div>
+    <div class="text-center">
+      <h2 class="text-2xl font-bold">Titolo tre</h2>
+      <p class="p-5 text-2xl bg-primary text-secondary">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit,
+        commodi!<br />Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+        In, harum.<br />Lorem ipsum dolor, sit amet consectetur adipisicing
+        elit. Qui, voluptate?
+      </p>
+  </body>
+</html>
