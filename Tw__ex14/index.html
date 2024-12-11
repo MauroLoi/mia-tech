@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#8b008b",
+              secondary: "#ffe4c4",
+              tertiary: '#87ceeb',
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body>
+    <form>
+      <label for="email" class="text-2xl">email</label>
+      <input type="text" id="email" name="email" class="focus:outline-none focus:border-blue-500 border">
+      <label for="password" class="text-2xl">password</label>
+      <input type="text" id="password" name="password" class="focus:outline-none focus:border-blue-500 border">
+      <button class="border active:bg-blue-500">submit</button>
+    </form>
+  </body>
+</html>
