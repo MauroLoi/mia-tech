@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            colors: {
+              primary: "#fff8dc",
+              secondary: "#483d8b",
+            },
+            spacing:  {
+              '1': '15px',
+              '2': '10px',
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body class="dark">
+    <h1 class="text-center text-3xl font-extrabold">Titolo</h1>
+    <p class="bg-primary text-center text-secondary text-2xl m-1 p-1 dark:bg-secondary dark:text-primary">
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem pariatur
+      alias quasi! Exercitationem autem molestiae cumque dolores, unde animi
+      consequuntur veritatis, iusto, quas quae dolorum nobis at omnis et
+      expedita.
+    </p>
+  </body>
+</html>
