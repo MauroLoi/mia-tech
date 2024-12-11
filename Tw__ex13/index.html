@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            colors: {
+              primary: "#fff8dc",
+              secondary: "#483d8b",
+              button: {
+                default: '#afeeee',
+                hover:  '#708090',
+              },
+            },
+            spacing:  {
+              '1': '15px',
+              '2': '10px',
+              '3': '30px',
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body class="">
+    <h1 class="text-center text-3xl font-extrabold">Titolo</h1>
+    <p class="bg-primary text-center text-secondary text-2xl m-1 p-1 dark:bg-secondary dark:text-primary">
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem pariatur
+      alias quasi! Exercitationem autem molestiae cumque dolores, unde animi
+      consequuntur veritatis, iusto, quas quae dolorum nobis at omnis et
+      expedita.
+    </p>
+    <div class="buttons flex text-5xl gap-56 justify-center">
+      <button class="bg-button-default hover:bg-button-hover w-56 h-100 p-3 border-2 border-secondary rounded-lg">+</button>
+      <button class="bg-red-400 hover:bg-red-700 w-56 h-100 p-3 border-2 border-secondary rounded-lg">+</button>
+      <button class="bg-lime-300 hover:bg-lime-800 w-56 h-100 p-3 border-2 border-secondary rounded-lg">+</button>
+    </div>
+  </body>
+</html>
