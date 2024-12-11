@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: "#8b008b",
+            secondary: "#ffe4c4",
+            tertiary: "#87ceeb",
+          },
+        },
+      },
+    };
+  </script>
+  <style type="text/tailwindcss">
+    @layer components {
+      .card {
+        font-family: Arial, Helvetica, sans-serif;
+        max-width: 300px;
+        height: 300px;
+        padding: 20px;
+        padding-bottom: 70px;
+        margin: 10px;
+        border: 2px groove;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+
+      .card-v1 {
+        @apply card bg-lime-200 text-gray-800;
+      }
+
+      .card-v2 {
+        @apply card bg-blue-200 text-gray-800;
+      }
+      
+      .btn {
+        padding: 10px;
+        margin: 10px;
+        border: 2px groove;
+        border-radius: 4px;
+      }
+
+      .btn-v1 {
+        @apply btn bg-lime-200 hover:bg-lime-500 text-gray-800;
+      }
+
+      .btn-v2 {
+        @apply btn bg-blue-200 hover:bg-blue-500 text-gray-800;
+      }
+
+    }
+  </style>
+</head>
+<body>
+  <div class="card-v1">
+    <h3>Titolo card V1</h3>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia enim asperiores quam aut repellat? Aut excepturi eaque optio alias similique.</p>
+  </div>
+  <div class="card-v2">
+    <h3>Titolo card V2</h3>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia enim asperiores quam aut repellat? Aut excepturi eaque optio alias similique.</p>
+  </div>
+  <button class="btn-v1">bottone V1</button>
+  <button class="btn-v2">bottone V2</button>
+</body>
+</html>
