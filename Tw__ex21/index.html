@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: "#8b008b",
+            secondary: "#ffe4c4",
+            tertiary: "#87ceeb",
+          },
+        },
+      },
+    };
+  </script>
+  <style type="text/tailwindcss">
+    @layer components {
+      .para {
+        background-color: beige;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 22px;
+        text-align: center;
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="flex flex-wrap">
+    <div class="flex-1 min-w-64 bg-red-500 p-4 m-2">item</div>
+    <div class="flex-1 min-w-28 bg-lime-500 p-4 m-2">item</div>
+    <div class="flex-1 min-w-80 bg-blue-500 p-4 m-2">item</div>
+    <div class="flex-1 min-w-64 bg-red-500 p-4 m-2">item</div>
+    <div class="flex-1 min-w-96 bg-lime-500 p-4 m-2">item</div>
+    <div class="flex-1 min-w-64 bg-blue-500 p-4 m-2">item</div>
+  </div>
+</body>
+</html>
