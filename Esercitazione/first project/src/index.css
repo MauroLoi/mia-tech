@@ -7,6 +7,7 @@
   padding: 20px;
   background-color: rgb(95, 139, 139);
   border: 2px groove;
+  border-radius: 5px;
 }
 
 .card {
