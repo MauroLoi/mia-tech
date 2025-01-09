@@ -17,9 +17,7 @@ const Counter = () => {
     }
 
     const resetButton = () => {
-        setCount((count) => {
-            return count = 0;
-        })
+        setCount(0)
     }
 
     useEffect (() => {
