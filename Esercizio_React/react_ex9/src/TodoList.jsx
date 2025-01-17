@@ -1,51 +1,48 @@
-import React, { useState, useCallback, useMemo } from "react";
-import { useTodos } from "../context/TodoContext";
+import { useState, useCallback, useMemo, useRef, useEffect } from "react";
+import { useTodos } from "./provider/TodoContext";
+
 
 const TodoList = () => {
-    const { todos, loading, error } = useTodos(); // Usa il contesto
+    const { todos, loading, error } = useTodos();
     const [searchTerm, setSearchTerm] = useState("");
 
-    // Filtra i to-do usando useMemo
-    const filteredTodos = useMemo(() => {
-        if (!searchTerm) return todos || [];
-        const lowerCaseSearchTerm = searchTerm.toLowerCase();
-        return todos.filter((todo) =>
-            todo.title.toLowerCase().includes(lowerCaseSearchTerm)
-        );
-    }, [todos, searchTerm]);
 
     const handleSearchChange = useCallback((event) => {
         setSearchTerm(event.target.value);
     }, []);
 
+    const filteredTodos = useMemo(() => {
+        if (!searchTerm) return todos || [];
+        const lowerCaseSearchTerm = searchTerm.toLowerCase();
+        return (todos || []).filter((todo) =>
+            todo.title.toLowerCase().includes(lowerCaseSearchTerm)
+        );
+    }, [todos, searchTerm]);
+
+    const inputRef = useRef();
+
+    useEffect(() => {
+        inputRef.current.focus();
+    }, []);
+
     return (
         <div>
-            <h1>To-Do List</h1>
-            <input
-                type="text"
-                placeholder="Search todos..."
-                value={searchTerm}
-                onChange={handleSearchChange}
-                style={{ marginBottom: "10px", padding: "5px", width: "100%" }}
-            />
+            <input type="text" placeholder="Search todos..." value={searchTerm} onChange={handleSearchChange} ref={inputRef} />
+            {loading && <p>Loading..</p>}
+            {error && <p>Error:</p>}
 
-            {loading && <p>Loading...</p>}
-            {error && <p style={{ color: "red" }}>Error: {error}</p>}
-
-            {!loading && !error && filteredTodos.length > 0 && (
+            {!loading && !error && todos && (
                 <ul>
                     {filteredTodos.map((todo) => (
                         <li key={todo.id}>
-                            <strong>{todo.title}</strong> -{" "}
-                            {todo.completed ? "Completed" : "Not Completed"}
+                            <strong>{todo.title}</strong> 
                         </li>
                     ))}
                 </ul>
             )}
-
-            {!loading && !error && filteredTodos.length === 0 && <p>No todos found.</p>}
+            {!loading && !error && todos && todos.length === 0 && <p>{error.message}</p>}
         </div>
-    );
-};
+    )
+}
 
-export default TodoList;
+export default TodoList
