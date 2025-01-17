@@ -1,44 +1,51 @@
-import { useState, useCallback, useMemo } from "react";
-import { useFetch } from "./hooks/useFetch";
-
-
-const API_URL = "https://jsonplaceholder.typicode.com/todos"
+import React, { useState, useCallback, useMemo } from "react";
+import { useTodos } from "../context/TodoContext";
 
 const TodoList = () => {
-    const { data: todos, error, loading } = useFetch(API_URL, { method: "GET" })
+    const { todos, loading, error } = useTodos(); // Usa il contesto
     const [searchTerm, setSearchTerm] = useState("");
 
+    // Filtra i to-do usando useMemo
+    const filteredTodos = useMemo(() => {
+        if (!searchTerm) return todos || [];
+        const lowerCaseSearchTerm = searchTerm.toLowerCase();
+        return todos.filter((todo) =>
+            todo.title.toLowerCase().includes(lowerCaseSearchTerm)
+        );
+    }, [todos, searchTerm]);
 
     const handleSearchChange = useCallback((event) => {
         setSearchTerm(event.target.value);
     }, []);
 
-    const filteredTodos = useMemo(() => {
-        if (!searchTerm) return todos || [];
-        const lowerCaseSearchTerm = searchTerm.toLowerCase();
-        return (todos || []).filter((todo) =>
-            todo.title.toLowerCase().includes(lowerCaseSearchTerm)
-        );
-    }, [todos, searchTerm]);
-
     return (
         <div>
-            <input type="text" placeholder="Search todos..." value={searchTerm} onChange={handleSearchChange} />
-            {loading && <p>Loading..</p>}
-            {error && <p>Error:</p>}
+            <h1>To-Do List</h1>
+            <input
+                type="text"
+                placeholder="Search todos..."
+                value={searchTerm}
+                onChange={handleSearchChange}
+                style={{ marginBottom: "10px", padding: "5px", width: "100%" }}
+            />
 
-            {!loading && !error && todos && (
+            {loading && <p>Loading...</p>}
+            {error && <p style={{ color: "red" }}>Error: {error}</p>}
+
+            {!loading && !error && filteredTodos.length > 0 && (
                 <ul>
                     {filteredTodos.map((todo) => (
                         <li key={todo.id}>
-                            <strong>{todo.title}</strong> 
+                            <strong>{todo.title}</strong> -{" "}
+                            {todo.completed ? "Completed" : "Not Completed"}
                         </li>
                     ))}
                 </ul>
             )}
-            {!loading && !error && todos && todos.length === 0 && <p>{error.message}</p>}
-        </div>
-    )
-}
 
-export default TodoList
+            {!loading && !error && filteredTodos.length === 0 && <p>No todos found.</p>}
+        </div>
+    );
+};
+
+export default TodoList;
