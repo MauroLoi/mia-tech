@@ -1,5 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 nav {
     display: flex;
-    gap: 10px;
+    gap: 30px;
     padding: 10px;
+    background-color: rgb(223, 215, 206);
+    font-size: 22px;
 }
