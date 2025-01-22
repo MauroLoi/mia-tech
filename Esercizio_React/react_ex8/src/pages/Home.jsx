@@ -5,7 +5,7 @@ import { useCallback } from "react";
 
 const API_URL = "https://jsonplaceholder.typicode.com/todos"
 
-const TodoList = () => {
+const Home = () => {
     const { data: todos, error, loading } = useFetch(API_URL, { method: "GET" })
     const [searchTerm, setSearchTerm] = useState("");
 
@@ -35,4 +35,4 @@ const TodoList = () => {
     )
 }
 
-export default TodoList
+export default Home
