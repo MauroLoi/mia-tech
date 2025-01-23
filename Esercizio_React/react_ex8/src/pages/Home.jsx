@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useFetch } from "../hooks/useFetch";
 import { useFilteredTodos } from "../hooks/useFilteredTodos";
 import { useCallback } from "react";
+import { Link } from "react-router-dom"
 
 const API_URL = "https://jsonplaceholder.typicode.com/todos"
 
@@ -25,7 +26,7 @@ const Home = () => {
                 <ul>
                     {filteredTodos.map((todo) => (
                         <li key={todo.id}>
-                            <strong>{todo.title}</strong> 
+                            <Link to={`/todoDetails/${todo.id}`}><strong>{todo.title}</strong></Link>
                         </li>
                     ))}
                 </ul>
