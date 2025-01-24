@@ -2,19 +2,25 @@ import { useState } from "react";
 import { useFetch } from "../hooks/useFetch";
 import { useFilteredTodos } from "../hooks/useFilteredTodos";
 import { useCallback } from "react";
-import { Link } from "react-router-dom"
+import { Link, useSearchParams } from "react-router-dom"
 
 const API_URL = "https://jsonplaceholder.typicode.com/todos"
 
 const Home = () => {
     const { data: todos, error, loading } = useFetch(API_URL, { method: "GET" })
-    const [searchTerm, setSearchTerm] = useState("");
+
+    const [searchParams, setSearchParams] = useSearchParams();
+    const [searchTerm, setSearchTerm] = useState(() => searchParams.get("search") || "");
 
     const filteredTodos = useFilteredTodos(todos || [], searchTerm);
 
     const handleSearchChange = useCallback((event) => {
-        setSearchTerm(event.target.value);
-    }, []);
+        const value = event.target.value;
+        setSearchTerm(value);
+        setSearchParams(value ? { search: value } : {});
+    },
+        [setSearchParams]
+    );
 
     return (
         <div>
