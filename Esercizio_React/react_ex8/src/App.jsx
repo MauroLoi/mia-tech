@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom"
+import { Routes, Route, Link } from "react-router-dom"
 
 import About from "./pages/About"
 import Home from "./pages/Home"
@@ -16,6 +16,17 @@ function App() {
           <Route path="todoDetails/:id" element={<TodoDetails />} />
         </Route>
       </Routes>
+
+      <div>
+        <ul>
+          <li>
+            <Link to="/">Home</Link>
+          </li>
+          <li>
+            <Link to="/about">About</Link>
+          </li>
+        </ul>
+      </div>
     </>
   )
 }
