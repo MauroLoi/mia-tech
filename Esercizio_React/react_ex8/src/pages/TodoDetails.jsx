@@ -6,15 +6,14 @@ const TodoDetails = () => {
     const { id } = useParams();
     const dispatch = useDispatch();
 
-    
     const todo = useSelector((state) =>
-        Array.isArray(state.todos) ? state.todos.find((todo) => todo.id === Number(id)) : null
+        state.todos.todos.find((todo) => todo.id === Number(id))
     );
 
     if (!todo) return <p>No todos found</p>;
 
     const handleToggle = () => {
-        dispatch(toggleTodo(todo.id)); 
+        dispatch(toggleTodo(todo.id));
     };
 
     return (
@@ -24,10 +23,11 @@ const TodoDetails = () => {
             <p>To-do ID: {todo.id}</p>
             <p>Completed: {todo.completed.toString()}</p>
             <button onClick={handleToggle}>
-                {todo.completed ? "Non completato" : "Completato"}
+                {todo.completed ? "Mark as Incomplete" : "Mark as Complete"}
             </button>
         </div>
     );
 };
 
 export default TodoDetails;
+

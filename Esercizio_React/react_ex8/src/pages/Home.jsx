@@ -1,28 +1,31 @@
-import { useState, useCallback } from "react";
-import { useFetch } from "../hooks/useFetch";
-import { useFilteredTodos } from "../hooks/useFilteredTodos";
+import { useEffect, useState, useCallback } from "react";
 import { Link, useSearchParams } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { setTodos, toggleTodo } from "../store/slice/manageTodos";
-
-const API_URL = "https://jsonplaceholder.typicode.com/todos";
+import { useSelector, useDispatch } from "react-redux";
+import { fetchTodos, toggleTodo } from "../store/slice/manageTodos";
 
 const Home = () => {
-    const { data: todos, error, loading } = useFetch(API_URL, { method: "GET" });
     const dispatch = useDispatch();
+    const { todos, loading, error } = useSelector((state) => state.todos);
 
     const [searchParams, setSearchParams] = useSearchParams();
     const [searchTerm, setSearchTerm] = useState(() => searchParams.get("search") || "");
-    const filteredTodos = useFilteredTodos(todos || [], searchTerm);
+
+    useEffect(() => {
+        dispatch(fetchTodos());
+    }, [dispatch]);
 
     const handleSearchChange = useCallback((event) => {
         setSearchTerm(event.target.value);
         setSearchParams(event.target.value ? { search: event.target.value } : {});
     }, [setSearchParams]);
 
-    if (todos) {
-        dispatch(setTodos(todos)); 
-    }
+    const handleToggle = (todoId) => {
+        dispatch(toggleTodo(todoId));
+    };
+
+    const filteredTodos = todos.filter((todo) =>
+        todo.title.toLowerCase().includes(searchTerm.toLowerCase())
+    );
 
     return (
         <div>
@@ -32,9 +35,9 @@ const Home = () => {
                 value={searchTerm}
                 onChange={handleSearchChange}
             />
-            {loading && <p>Loading..</p>}
+            {loading && <p>Loading...</p>}
             {error && <p>Error: {error}</p>}
-            {!loading && !error && todos && (
+            {!loading && !error && todos.length > 0 ? (
                 <ul>
                     {filteredTodos.map((todo) => (
                         <li key={todo.id}>
@@ -44,6 +47,8 @@ const Home = () => {
                         </li>
                     ))}
                 </ul>
+            ) : (
+                <p>No todos found</p>
             )}
         </div>
     );
