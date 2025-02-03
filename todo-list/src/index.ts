@@ -1,4 +1,4 @@
-import { Todo } from "./types";
+import { Todo, User } from "./types";
 
 const todos: Todo[] = []; 
 
@@ -13,9 +13,23 @@ function addTodo(title: string): Todo {
     return newTodo;
 }
 
-console.log(addTodo("Prima attività"));
-console.log(addTodo("Seconda attività"));
-console.log(todos); 
+function assignTodoToUser(todoId: number, userId: number): void {
+    const todo = todos.find(t => t.id === todoId);
+
+    if (todo) {
+        todo.userId = userId;
+    }
+}
+
+const todo1 = addTodo("Prima attività");
+const todo2 = addTodo("Seconda attività");
+
+assignTodoToUser(todo1.id, 1); 
+assignTodoToUser(todo2.id, 2); 
+
+console.log(todos);
+
+
 
 
 
