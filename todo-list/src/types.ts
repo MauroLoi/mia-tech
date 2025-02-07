@@ -13,5 +13,13 @@ export interface TodoWithMetadata extends Todo {
 export interface User {
     id: number;
     name: string;
-    email?: string
+    email?: string;
+    readonly todos: ReadonlyArray<Todo>;
+}
+
+export interface Project {
+    id: number;
+    name: string;
+    users: User[];
+    todos: Todo[];
 }
