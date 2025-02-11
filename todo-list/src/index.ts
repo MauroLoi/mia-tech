@@ -1,17 +1,13 @@
-import { Todo, User, Project } from "./types";
+import { Todo, User, Project, TodoStatus } from "./types";
 
 const todos: Todo[] = [];
-
-/* const users: User[] = [
-  { id: 1, name: "Marco", email: "marco@gmail.com" },
-  { id: 2, name: "Andrea", email: "andrea@gmail.com" },
-]; */
 
 function addTodo(title: string, metadata?: string | object): Todo {   // Prima metadata accettava il parametro "any". (  metadata?: any  )
 	const newTodo: Todo = {
     id: todos.length > 0 ? todos[todos.length - 1].id + 1 : 1,
     title,
     completed: false,
+    status: TodoStatus.Pending,
     metadata,
   };
 
@@ -72,16 +68,41 @@ function createProject(name: string, users: User[], todos: Todo[]): Project {
   };
 }
 
+function updateTodoStatus(todoId: number, status: TodoStatus): void {
+  const todo = todos.find((t) => t.id === todoId);
+
+  if (!todo) {
+    error(`Todo con ID ${todoId} non trovato.`);
+  }
+
+  todo.status = status;
+}
+
 const todo1 = addTodo("Prima attività");
 const todo2 = addTodo("Seconda attività");
+console.log("Todos dopo l'aggiunta:", todos);
 
-assignTodoToUser(todo1.id, 1);
-assignTodoToUser(todo2.id, 2);
+const user1: User = { id: 1, name: "Marco", email: "marco@gmail.com", todos: [] as readonly Todo[] };
+const user2: User = { id: 2, name: "Andrea", email: "andrea@gmail.com", todos: [] as readonly Todo[] };
 
-console.log(todos);
-console.log(getUserTodos(1));
+assignTodoToUser(todo1.id, user1.id);
+assignTodoToUser(todo2.id, user2.id);
+console.log("Todos dopo l'assegnazione:", todos);
 
-console.log(parseInput("casaa"));
-console.log(parseInput(123));
+updateTodo(todo1.id, { completed: true, metadata: "Completato con successo" });
+console.log("Todos dopo l'aggiornamento:", todos);
 
-updateTodo(todo1.id, { completed: true });
+updateTodoStatus(todo1.id, TodoStatus.Completed);
+console.log("Todos dopo il cambio di stato:", todos);
+
+console.log(getTodoSummary(todo1.id));
+console.log(getUserTodos(user1.id));
+
+const project1 = createProject("Nuovo Progetto", [user1, user2], todos);
+console.log("Progetto creato:", project1);
+
+
+
+
+
+
