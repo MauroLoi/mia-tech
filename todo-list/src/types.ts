@@ -30,3 +30,9 @@ export enum TodoStatus {
   InProgress = "InProgress",
   Completed = "Completed",
 }
+
+export type PartialTodo = Partial<Todo>;
+
+export type TodoRecord = {
+  [id: number]: Todo;
+};

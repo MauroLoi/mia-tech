@@ -1,8 +1,10 @@
-import { Todo, User, Project, TodoStatus } from "./types";
+import { Todo, Project, TodoStatus, PartialTodo, TodoRecord } from "./types";
+import User from "./user";
+import { filterTodos } from "./utils";
 
 const todos: Todo[] = [];
 
-function addTodo(title: string, metadata?: string | object): Todo {   // Prima metadata accettava il parametro "any". (  metadata?: any  )
+function addTodo(title: string, metadata?: string | object): Todo {   
 	const newTodo: Todo = {
     id: todos.length > 0 ? todos[todos.length - 1].id + 1 : 1,
     title,
@@ -78,29 +80,50 @@ function updateTodoStatus(todoId: number, status: TodoStatus): void {
   todo.status = status;
 }
 
-const todo1 = addTodo("Prima attività");
-const todo2 = addTodo("Seconda attività");
-console.log("Todos dopo l'aggiunta:", todos);
+function updatePartialTodo(todoId: number, updates: PartialTodo): void {
+  const todo = todos.find((t) => t.id === todoId);
+  if (!todo) {
+    throw new Error(`Todo con ID ${todoId} non trovato.`);
+  }
 
-const user1: User = { id: 1, name: "Marco", email: "marco@gmail.com", todos: [] as readonly Todo[] };
-const user2: User = { id: 2, name: "Andrea", email: "andrea@gmail.com", todos: [] as readonly Todo[] };
+  Object.assign(todo, updates); 
+}
 
-assignTodoToUser(todo1.id, user1.id);
-assignTodoToUser(todo2.id, user2.id);
-console.log("Todos dopo l'assegnazione:", todos);
+function convertArrayToRecord(todos: Todo[]): TodoRecord {
+  const record: TodoRecord = {};
+  todos.forEach((todo) => {
+    record[todo.id] = todo; 
+  });
+  return record;
+}
 
-updateTodo(todo1.id, { completed: true, metadata: "Completato con successo" });
-console.log("Todos dopo l'aggiornamento:", todos);
 
-updateTodoStatus(todo1.id, TodoStatus.Completed);
-console.log("Todos dopo il cambio di stato:", todos);
+const user1 = new User(1, "Marco", "marco@gmail.com");
+const user2 = new User(2, "Andrea", "andrea@gmail.com");
 
-console.log(getTodoSummary(todo1.id));
-console.log(getUserTodos(user1.id));
+const todo1 = addTodo("Fare la spesa");
+updatePartialTodo(todo1.id, { title: "Fare la spesa e comprare frutta", completed: true });
 
-const project1 = createProject("Nuovo Progetto", [user1, user2], todos);
-console.log("Progetto creato:", project1);
+const todo2 = addTodo("Leggere un libro");
+const todo3 = addTodo("Andare in palestra");
 
+updateTodoStatus(todo2.id, TodoStatus.InProgress);
+updateTodoStatus(todo3.id, TodoStatus.Completed);
+
+user1.addTodo(todo1);
+user1.addTodo(todo2);
+user2.addTodo(todo3);
+
+console.log(user1);
+console.log(user2);
+
+const incompletedTodos = filterTodos(todos, (todo) => todo.status !== TodoStatus.Completed);
+
+console.log("Todos incompletati:", incompletedTodos);
+
+const todoRecord = convertArrayToRecord(todos);
+
+console.log(todoRecord);
 
 
 
